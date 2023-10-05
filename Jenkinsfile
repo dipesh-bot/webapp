@@ -2,7 +2,7 @@ pipeline {
   agent any
   tools {
     // Use single quotes for tool names
-    maven 'Maven'
+    maven ""Maven""
   }
   stages {
     stage('Initialize') {
