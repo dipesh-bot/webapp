@@ -1,20 +1,25 @@
-
 pipeline {
   agent any
-tools {
-  maven 'Maven'
-}
+  tools {
+    // Use single quotes for tool names
+    maven 'Maven'
+  }
   stages {
-    stage ('Initialize'){
+    stage('Initialize') {
       steps {
-        sh ' ' '
-              echo "PATH= ${PATH}"
-              echo "M2_HOME = $(M2_HOME}"
-           ' ' '
+        // Corrected the interpolation syntax
+        sh '''
+          echo "PATH = ${PATH}"
+          echo "M2_HOME = ${M2_HOME}"
+        '''
+      }
+    }
+    stage('Build') {
+      steps {
+        // Removed unnecessary single quotes
+        sh 'mvn clean package'
+      }
+    }
+  }
 }
-}
-    stage ('Build') {
-       sh 'mvn clean package'
-}
-}
-}
+
