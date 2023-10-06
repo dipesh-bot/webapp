@@ -28,7 +28,6 @@ stage ('Source-Code-Analysis') {
 	sh 'bash owasp-dependency-check.sh'
 }
 }
-}
 */ 
 stage ('SAST') {
 	steps {
@@ -37,6 +36,7 @@ stage ('SAST') {
 		sh 'cat target/sonar/report-task.txt'
 	}
 	} 
+}
 stage('Build') {
       steps {
         sh 'mvn clean package'
