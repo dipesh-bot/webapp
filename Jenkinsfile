@@ -28,7 +28,7 @@ stage ('Source-Code-Analysis') {
 	sh 'bash owasp-dependency-check.sh'
 }
 }
-*/ 
+ 
 stage ('SAST') {
 	steps {
 	withSonarQubeEnv('sonar') {
@@ -37,6 +37,7 @@ stage ('SAST') {
 	}
 	} 
 }
+*/
 stage('Build') {
       steps {
         sh 'mvn clean package'
