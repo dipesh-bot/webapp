@@ -28,6 +28,7 @@ stage ('Source-Code-Analysis') {
 	sh 'bash owasp-dependency-check.sh'
 }
 }
+}
 */ 
 stage ('SAST') {
 	steps {
