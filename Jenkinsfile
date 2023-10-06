@@ -12,8 +12,14 @@ pipeline {
         '''
       }
     }
-    
-    stage('Build') {
+stage ('Check-git-Secrets') {
+	steps {
+       sh 'rm trufflehog || true'
+      sh 'docker run -t gesellix/trufflehog --json https://github.com/dipesh-bot/webapp.git > trufflehog'
+      sh 'cat trufflehog'
+}
+}
+stage('Build') {
       steps {
         sh 'mvn clean package'
       }
