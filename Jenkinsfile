@@ -19,7 +19,7 @@ stage ('Check-git-Secrets') {
       sh 'cat trufflehog'
 }
 }
-stage ('Source Code Analysis') {
+stage ('Source-Code-Analysis') {
 	steps {
 	sh 'rm owasp* || true'
         sh 'wget "https://github.com/dipesh-bot/webapp/blob/master/owasp-dependency-check.sh" '
