@@ -52,7 +52,6 @@ stage('Build') {
 */
   }
 }
-
 stage ('DAST') {
 	steps {
 	   sshagent(['zap']) {
