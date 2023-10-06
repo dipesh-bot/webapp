@@ -31,7 +31,7 @@ stage ('Source-Code-Analysis') {
 */ 
 stage ('SAST') {
 	steps {
-	withSonarQubeEnv('devsecops') {
+	withSonarQubeEnv('sonar') {
 		sh 'mvn sonar:sonar'
 		sh 'cat target/sonar/report-task.txt'
 	}
