@@ -45,7 +45,7 @@ stage('Build') {
     }
     stage ('Deploy-To-Tomcat') {
       steps {
-        sshagent(['192.168.182.130']) {
+        sshagent(['tomcat']) {
           sh 'scp -o StrictHostKeyChecking=no target/*.war dipesh1@192.168.182.131:/prod/apache-tomcat-8.5.93/webapps/webapp.war'
         }
       }
