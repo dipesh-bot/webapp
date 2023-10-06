@@ -46,8 +46,7 @@ stage('Build') {
     stage ('Deploy-To-Tomcat') {
       steps {
         sshagent(['tomcat']) {
-          sh '
-scp /var/lib/jenkins/workspace/WebApplication/target/WebApp.war dipesh1@192.168.182.131:/prod/apache-tomcat-8.5.93/webapps/webapp.war'
+          sh 'scp /var/lib/jenkins/workspace/WebApplication/target/WebApp.war dipesh1@192.168.182.131:/prod/apache-tomcat-8.5.93/webapps/webapp.war'
         }
       }
 }   
