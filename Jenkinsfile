@@ -19,6 +19,7 @@ stage ('Check-git-Secrets') {
       sh 'cat trufflehog'
 }
 }
+/*
 stage ('Source-Code-Analysis') {
  steps {
 	sh 'rm owasp* || true'
@@ -27,6 +28,14 @@ stage ('Source-Code-Analysis') {
 	sh 'bash owasp-dependency-check.sh'
 }
 }
+*/ 
+stage ('SAST') {
+	steps {
+	withSonarQubeEnv('devsecops') {
+		sh 'mvn sonar:sonar'
+		sh 'cat target/sonar/report-task.txt'
+	}
+	} 
 stage('Build') {
       steps {
         sh 'mvn clean package'
