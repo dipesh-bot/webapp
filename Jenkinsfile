@@ -19,7 +19,6 @@ stage ('Check-git-Secrets') {
       sh 'cat trufflehog'
 }
 }
-/*
 stage ('Source-Code-Analysis') {
  steps {
 	sh 'rm owasp* || true'
@@ -49,7 +48,6 @@ stage('Build') {
         }
       }
 }
-*/
   }
 }
 stage ('DAST') {
