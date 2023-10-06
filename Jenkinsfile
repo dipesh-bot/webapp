@@ -42,14 +42,23 @@ stage('Build') {
         sh 'mvn clean package'
       }
     }
-    /*
     stage ('Deploy-To-Tomcat') {
       steps {
         sshagent(['192.168.182.130']) {
           sh 'scp -o StrictHostKeyChecking=no target/*.war dipesh1@192.168.182.131:/prod/apache-tomcat-8.5.93/webapps/webapp.war'
         }
       }
-} */    
+}   
   }
 }
 
+stage ('DAST') {
+	steps {
+	   sshagent(['zap']) {
+		sh 'ssh -o StrictHostKeyChecking=no dipesh1@192.168.182.131 "docker run -t owasp/zap2docker-stable zap-baseline.py -t http://192.168.182.131/webapp" '
+	}
+}
+}
+
+}
+}
