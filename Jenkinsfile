@@ -19,6 +19,13 @@ stage('Build') {
       }
     }
 
+ stage ('Deploy-To-Tomcat') {
+      steps {
+        sshagent(['tomcat']) {
+          sh 'scp -o StrictHostKeyChecking=no target/*.war ubuntu@3.80.84.187:/prod/apache-tomcat-8.5.93/webapps/webapp.war'
+        }
+      }
+}   
 }
 }
 
