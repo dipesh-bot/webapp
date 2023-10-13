@@ -30,6 +30,7 @@ stage ('Source-Code-Analysis') {
 	sh 'cat /var/lib/jenkins/OWASP-Dependency-Check/reports/dependency-check-report.xml'
 }
 }
+*/
 stage ('SAST') {
 	steps {
 	withSonarQubeEnv('sonar') {
@@ -38,7 +39,7 @@ stage ('SAST') {
 	}
 	} 
 }
-*/
+
 stage('Build') {
       steps {
         sh 'mvn clean package'
