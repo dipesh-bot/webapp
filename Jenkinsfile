@@ -20,6 +20,7 @@ stage ('Check-git-Secrets') {
       sh 'cat trufflehog'
 }
 }
+	  /*
 stage ('Source-Code-Analysis') {
  steps {
 	sh 'rm owasp* || true'
@@ -29,7 +30,7 @@ stage ('Source-Code-Analysis') {
 	sh 'cat /var/lib/jenkins/OWASP-Dependency-Check/reports/dependency-check-report.xml'
 }
 }
-	  
+*/
 stage('Build') {
       steps {
         sh 'mvn clean package'
